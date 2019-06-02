@@ -26,14 +26,10 @@ enum Affiliation: String {
         case .RESISTANCE:
             return Colors.greyBlue
         case .FIRST_ORDER:
-            return Colors.green
+            return Colors.maroon
         case .SITH:
             return Colors.red
         }
-    }
-    
-    func string() -> String {
-        return self.string()
     }
 }
 

@@ -586,15 +586,17 @@
 			baseConfigurationReference = 7E1FEF4D452CFCB4212117BA /* Pods-StarWarsCharacters.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3W3QAKTRFB;
+				DEVELOPMENT_TEAM = USSGBV55CM;
 				INFOPLIST_FILE = StarWarsCharacters/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kraig.StarWarsCharacters;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ktwdev.swc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -605,15 +607,17 @@
 			baseConfigurationReference = 1B2FF6DB13E42FB0C88972CB /* Pods-StarWarsCharacters.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3W3QAKTRFB;
+				DEVELOPMENT_TEAM = USSGBV55CM;
 				INFOPLIST_FILE = StarWarsCharacters/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kraig.StarWarsCharacters;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ktwdev.swc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
