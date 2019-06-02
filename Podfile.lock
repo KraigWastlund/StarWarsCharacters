@@ -1,0 +1,29 @@
+PODS:
+  - DBC (1.2.0):
+    - DBC/Bridged (= 1.2.0)
+    - DBC/Objc (= 1.2.0)
+    - DBC/Swift (= 1.2.0)
+  - DBC/Bridged (1.2.0):
+    - DBC/Objc
+    - DBC/Swift
+  - DBC/Objc (1.2.0)
+  - DBC/Swift (1.2.0)
+
+DEPENDENCIES:
+  - DBC (from `https://github.com/busybusy/DBC-Apple.git`)
+
+EXTERNAL SOURCES:
+  DBC:
+    :git: https://github.com/busybusy/DBC-Apple.git
+
+CHECKOUT OPTIONS:
+  DBC:
+    :commit: 6333daa6a69336d8af8b2ec5a55bbe50e37ef9ab
+    :git: https://github.com/busybusy/DBC-Apple.git
+
+SPEC CHECKSUMS:
+  DBC: 678e7c81ccec8c081d7ad0825e3ba445532d39b7
+
+PODFILE CHECKSUM: 11ccf4e7bcb3fe7d928498ab92805552ca5a7185
+
+COCOAPODS: 1.7.0
