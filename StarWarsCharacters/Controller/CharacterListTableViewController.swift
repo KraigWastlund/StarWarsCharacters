@@ -35,7 +35,7 @@ class CharacterListTableViewController: UITableViewController {
         imageView.contentMode = UIImageView.ContentMode.scaleAspectFill
         tableView.backgroundView = imageView
         
-        // network call
+        // get characters JSON and map to struct
         URLSession.shared.apiGetCall(urlSuffix: "", type: MemberNetworkResponse.self) { [weak self] (success, result) in
             guard let s = self else { return }
             guard success == true else { return }
