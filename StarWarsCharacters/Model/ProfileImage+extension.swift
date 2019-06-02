@@ -14,10 +14,10 @@ import CoreData
 
 extension ProfileImage {
     
-    static func getProfileImage(for member: Member, newUrl: String, in context: NSManagedObjectContext, completion: @escaping (_ image: ProfileImage?)->Void) {
+    static func getProfileImage(for member: Member, newUrl: String?, in context: NSManagedObjectContext, completion: @escaping (_ image: ProfileImage?)->Void) {
         
         if let profileImage = ProfileImage.retreiveFromCoreData(withMemberId: member.id, in: context) {
-            if profileImage.imageUrl == newUrl {
+            if newUrl == nil || profileImage.imageUrl == newUrl {
                 completion(profileImage)
             } else {
                 ProfileImage.deleteFromCoreData(profileImage: profileImage, in: context)
@@ -25,7 +25,8 @@ extension ProfileImage {
         }
         
         // if i get here i need to download the new image, store in core data, and call completion
-        guard let url = URL(string: newUrl) else { checkFailure("we have no url"); return }
+        guard let urlString = newUrl else { completion(nil); return }
+        guard let url = URL(string: urlString) else { checkFailure("we have no url"); return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard
                 let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
@@ -34,7 +35,7 @@ extension ProfileImage {
                 let image = UIImage(data: data)
                 else { return }
             
-            ProfileImage.saveToCoreData(image: image, url: newUrl, memberId: member.id, context: context) { (profileImage) in
+            ProfileImage.saveToCoreData(image: image, url: urlString, memberId: member.id, context: context) { (profileImage) in
                 completion(profileImage)
             }
             }.resume()

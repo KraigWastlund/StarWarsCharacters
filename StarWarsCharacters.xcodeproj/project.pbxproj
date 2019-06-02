@@ -23,6 +23,9 @@
 		64356D7422A410F0006C83FC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64356D7322A410F0006C83FC /* UIColor+Extension.swift */; };
 		64356D7622A411E6006C83FC /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64356D7522A411E6006C83FC /* Member.swift */; };
 		64356D7B22A45A93006C83FC /* ProfileImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64356D7A22A45A93006C83FC /* ProfileImage+extension.swift */; };
+		64504AF822A4677F00B85803 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64504AF722A4677F00B85803 /* Colors.swift */; };
+		64504AFA22A4688A00B85803 /* colors.png in Resources */ = {isa = PBXBuildFile; fileRef = 64504AF922A4688A00B85803 /* colors.png */; };
+		64504AFC22A46BE400B85803 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64504AFB22A46BE400B85803 /* DetailViewController.swift */; };
 		9AAB6FBC14AD56EBF6F14974 /* Pods_StarWarsCharacters.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9610578A571E5CA13FB030F6 /* Pods_StarWarsCharacters.framework */; };
 		C049E8D845A53ECF866ACAF8 /* Pods_StarWarsCharactersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1554E93ADA1900673B916DC9 /* Pods_StarWarsCharactersTests.framework */; };
 /* End PBXBuildFile section */
@@ -60,6 +63,9 @@
 		64356D7322A410F0006C83FC /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		64356D7522A411E6006C83FC /* Member.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		64356D7A22A45A93006C83FC /* ProfileImage+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileImage+extension.swift"; sourceTree = "<group>"; };
+		64504AF722A4677F00B85803 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		64504AF922A4688A00B85803 /* colors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colors.png; sourceTree = "<group>"; };
+		64504AFB22A46BE400B85803 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		7E1FEF4D452CFCB4212117BA /* Pods-StarWarsCharacters.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsCharacters.debug.xcconfig"; path = "Target Support Files/Pods-StarWarsCharacters/Pods-StarWarsCharacters.debug.xcconfig"; sourceTree = "<group>"; };
 		7EAE4DD2573AB350DD66826F /* Pods-StarWarsCharactersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsCharactersTests.release.xcconfig"; path = "Target Support Files/Pods-StarWarsCharactersTests/Pods-StarWarsCharactersTests.release.xcconfig"; sourceTree = "<group>"; };
 		9610578A571E5CA13FB030F6 /* Pods_StarWarsCharacters.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWarsCharacters.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				64356D6322A40F09006C83FC /* CharacterListTableViewController.swift */,
+				64504AFB22A46BE400B85803 /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -172,6 +179,8 @@
 		64356D6722A40FA8006C83FC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				64504AF922A4688A00B85803 /* colors.png */,
+				64504AF722A4677F00B85803 /* Colors.swift */,
 				64356D6822A40FB3006C83FC /* LocalizedStrings.swift */,
 				64356D6A22A41055006C83FC /* NetworkHelper.swift */,
 			);
@@ -285,6 +294,7 @@
 			files = (
 				64356D4B22A40E51006C83FC /* LaunchScreen.storyboard in Resources */,
 				64356D4822A40E51006C83FC /* Assets.xcassets in Resources */,
+				64504AFA22A4688A00B85803 /* colors.png in Resources */,
 				64356D4322A40E4F006C83FC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,10 +402,12 @@
 				64356D6622A40F7A006C83FC /* CharacterListCell.swift in Sources */,
 				64356D7222A410D2006C83FC /* URLSession+Extension.swift in Sources */,
 				64356D6B22A41055006C83FC /* NetworkHelper.swift in Sources */,
+				64504AF822A4677F00B85803 /* Colors.swift in Sources */,
 				64356D7022A410AD006C83FC /* JSONDecoder+Extension.swift in Sources */,
 				64356D6922A40FB3006C83FC /* LocalizedStrings.swift in Sources */,
 				64356D7422A410F0006C83FC /* UIColor+Extension.swift in Sources */,
 				64356D7622A411E6006C83FC /* Member.swift in Sources */,
+				64504AFC22A46BE400B85803 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,8 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // UIAppearance
+        UINavigationBar.appearance().barTintColor = Colors.darkBlue
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().tintColor = UIColor.white
         
         if let nc = self.window?.rootViewController as? UINavigationController {
             if let vc = nc.topViewController as? CharacterListTableViewController {

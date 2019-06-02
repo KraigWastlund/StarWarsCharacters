@@ -22,13 +22,13 @@ enum Affiliation: String {
     func color() -> UIColor {
         switch self {
         case .JEDI:
-            return UIColor.blue.withAlphaComponent(0.5)
+            return Colors.navyBlue
         case .RESISTANCE:
-            return UIColor.green.withAlphaComponent(0.5)
+            return Colors.greyBlue
         case .FIRST_ORDER:
-            return UIColor.black.withAlphaComponent(0.5)
+            return Colors.green
         case .SITH:
-            return UIColor.red.withAlphaComponent(0.5)
+            return Colors.red
         }
     }
 }
@@ -60,5 +60,17 @@ struct Member: Decodable {
         let fn = firstName ?? ""
         let ln = lastName ?? ""
         return "\(fn) \(ln)"
+    }
+    
+    func displayBirthday() -> String? {
+        guard let birthDate = birthdate else { checkFailure("no birth date on model"); return nil }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE MMM d, yyyy"
+        let formattedBirthDate = dateFormatter.string(from: birthDate)
+        return String(format: LocalizedStrings.birthDate_colon, formattedBirthDate)
+    }
+    
+    func displayForceSensitive() -> String {
+        return String(format: LocalizedStrings.forceSensitive_colon, forceSensitive ? "Yes" : "No")
     }
 }

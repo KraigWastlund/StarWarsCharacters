@@ -14,22 +14,25 @@ class CharacterListTableViewController: UITableViewController {
     
     private var members = [Member]()
     var context: NSManagedObjectContext!
+    var selectedMember: Member?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = LocalizedStrings.galacticPersonell
+        title = LocalizedStrings.galacticPersonnel
         setup()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        selectedMember = nil
     }
     
     private func setup() {
         
-        title = LocalizedStrings.galacticPersonell
-        
         tableView.register(CharacterListCell.self, forCellReuseIdentifier: "cell")
         
         // network call
-        
         URLSession.shared.apiGetCall(urlSuffix: "", type: MemberNetworkResponse.self) { [weak self] (success, result) in
             guard let s = self else { return }
             guard success == true else { return }
@@ -42,7 +45,7 @@ class CharacterListTableViewController: UITableViewController {
     // MARK: - Table view datasource/delegate
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CharacterListCell.cellHeight
+        return _cellHeight
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -72,5 +75,16 @@ class CharacterListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // navigate to detail view
         tableView.deselectRow(at: indexPath, animated: true)
+        selectedMember = members[indexPath.row]
+        performSegue(withIdentifier: "showDetail", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "showDetail" else { checkFailure("only segue possible!"); return }
+        guard let vc = segue.destination as? DetailViewController else { checkFailure("only vc possible!"); return }
+        guard let selectedMember = self.selectedMember else { checkFailure("Should have selected."); return }
+        
+        vc.member = selectedMember
+        vc.context = context
     }
 }

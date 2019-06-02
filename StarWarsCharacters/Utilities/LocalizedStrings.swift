@@ -9,5 +9,7 @@
 import Foundation
 
 struct LocalizedStrings {
-    static let galacticPersonell = NSLocalizedString("Galactic Personell", comment: "")
+    static let galacticPersonnel = NSLocalizedString("Galactic Personnel", comment: "")
+    static let birthDate_colon = NSLocalizedString("Birth Date: %@", comment: "")
+    static let forceSensitive_colon = NSLocalizedString("Force Sensitive: %@", comment: "")
 }
