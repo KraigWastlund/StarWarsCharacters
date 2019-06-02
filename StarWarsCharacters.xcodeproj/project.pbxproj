@@ -22,6 +22,7 @@
 		64356D7222A410D2006C83FC /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64356D7122A410D2006C83FC /* URLSession+Extension.swift */; };
 		64356D7422A410F0006C83FC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64356D7322A410F0006C83FC /* UIColor+Extension.swift */; };
 		64356D7622A411E6006C83FC /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64356D7522A411E6006C83FC /* Member.swift */; };
+		64356D7B22A45A93006C83FC /* ProfileImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64356D7A22A45A93006C83FC /* ProfileImage+extension.swift */; };
 		9AAB6FBC14AD56EBF6F14974 /* Pods_StarWarsCharacters.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9610578A571E5CA13FB030F6 /* Pods_StarWarsCharacters.framework */; };
 		C049E8D845A53ECF866ACAF8 /* Pods_StarWarsCharactersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1554E93ADA1900673B916DC9 /* Pods_StarWarsCharactersTests.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,7 @@
 		64356D7122A410D2006C83FC /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
 		64356D7322A410F0006C83FC /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		64356D7522A411E6006C83FC /* Member.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		64356D7A22A45A93006C83FC /* ProfileImage+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileImage+extension.swift"; sourceTree = "<group>"; };
 		7E1FEF4D452CFCB4212117BA /* Pods-StarWarsCharacters.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsCharacters.debug.xcconfig"; path = "Target Support Files/Pods-StarWarsCharacters/Pods-StarWarsCharacters.debug.xcconfig"; sourceTree = "<group>"; };
 		7EAE4DD2573AB350DD66826F /* Pods-StarWarsCharactersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsCharactersTests.release.xcconfig"; path = "Target Support Files/Pods-StarWarsCharactersTests/Pods-StarWarsCharactersTests.release.xcconfig"; sourceTree = "<group>"; };
 		9610578A571E5CA13FB030F6 /* Pods_StarWarsCharacters.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWarsCharacters.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +145,7 @@
 			children = (
 				64356D4422A40E4F006C83FC /* StarWarsCharacters.xcdatamodeld */,
 				64356D7522A411E6006C83FC /* Member.swift */,
+				64356D7A22A45A93006C83FC /* ProfileImage+extension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				64356D3722A40E4F006C83FC /* Frameworks */,
 				64356D3822A40E4F006C83FC /* Resources */,
 				F89CEFDBBD2EFFE6700F295F /* [CP] Embed Pods Frameworks */,
+				64356D7922A458E4006C83FC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -317,6 +321,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		64356D7922A458E4006C83FC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nKEYWORDS=\"TODO|FIXME|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | \\\nxargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | \\\nperl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"\n";
+		};
 		90142DB8B0D0ABBABE5FF669 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -365,6 +386,7 @@
 			files = (
 				64356D6422A40F09006C83FC /* CharacterListTableViewController.swift in Sources */,
 				64356D4622A40E4F006C83FC /* StarWarsCharacters.xcdatamodeld in Sources */,
+				64356D7B22A45A93006C83FC /* ProfileImage+extension.swift in Sources */,
 				64356D3E22A40E4F006C83FC /* AppDelegate.swift in Sources */,
 				64356D6E22A41083006C83FC /* DateFormatter+Extension.swift in Sources */,
 				64356D6622A40F7A006C83FC /* CharacterListCell.swift in Sources */,

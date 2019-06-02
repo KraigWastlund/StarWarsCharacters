@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import CoreData
 import DBC
 
 class CharacterListTableViewController: UITableViewController {
     
     private var members = [Member]()
+    var context: NSManagedObjectContext!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,9 +57,14 @@ class CharacterListTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CharacterListCell else { return UITableViewCell() }
         
         let currentMember = members[indexPath.row]
+        
         cell.populateCell(name: currentMember.displayName(), affiliation: currentMember.affiliation!)
-        let url = URL(string: currentMember.profilePicture!)!
-        cell.downloadProfilePicture(from: url)
+        guard let urlString = currentMember.profilePicture else { checkFailure("each member should have a pic url"); return UITableViewCell() }
+        ProfileImage.getProfileImage(for: currentMember, newUrl: urlString, in: context) { (profileImage) in
+            guard let profileImage = profileImage else { checkFailure("fail get image"); return }
+            guard let image = profileImage.image else { checkFailure("fail get image"); return }
+            cell.profileImage = UIImage(data: image)
+        }
         
         return cell
     }

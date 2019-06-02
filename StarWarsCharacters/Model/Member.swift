@@ -9,6 +9,8 @@
 
 import Foundation
 import UIKit
+import CoreData
+import DBC
 
 enum Affiliation: String {
     
@@ -39,31 +41,6 @@ extension Affiliation: Decodable {
         case FIRST_ORDER
         case SITH
     }
-    
-//    enum PostTypeCodingError: Error {
-//        case decoding(String)
-//    }
-//    
-//    init(from decoder: Decoder) throws {
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
-//        if let _ = try? values.decode(Int.self, forKey: .JEDI) {
-//            self = .JEDI
-//            return
-//        }
-//        if let _ = try? values.decode(String.self, forKey: .RESISTANCE) {
-//            self = .RESISTANCE
-//            return
-//        }
-//        if let _ = try? values.decode(String.self, forKey: .FIRST_ORDER) {
-//            self = .FIRST_ORDER
-//            return
-//        }
-//        if let _ = try? values.decode(String.self, forKey: .SITH) {
-//            self = .SITH
-//            return
-//        }
-//        throw PostTypeCodingError.decoding("Something went wrong decoding `Affiliation`: \(dump(values))")
-//    }
 }
 
 struct MemberNetworkResponse: Decodable {
@@ -75,7 +52,7 @@ struct Member: Decodable {
     let firstName: String?
     let lastName: String?
     let birthdate: Date?
-    let profilePicture: String?
+    let profilePicture: String? // TODO: RENAME!!!
     let forceSensitive: Bool
     let affiliation: Affiliation?
     

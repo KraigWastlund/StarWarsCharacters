@@ -16,7 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        if let nc = self.window?.rootViewController as? UINavigationController {
+            if let vc = nc.topViewController as? CharacterListTableViewController {
+                vc.context = persistentContainer.viewContext
+            }
+        }
+        
         return true
     }
 

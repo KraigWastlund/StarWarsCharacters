@@ -27,7 +27,7 @@ extension URLSession {
                     let nr = try JSONDecoder.challengeDecoder().decode(type, from: data)
                     DispatchQueue.main.async{ completion(true, nr) }
                 } catch let error {
-                    checkFailure("Failed to decode information.")
+                    checkFailure("Failed to decode information. \(error)")
                     completion(false, [String]())
                 }
             }
