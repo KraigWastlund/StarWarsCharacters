@@ -31,6 +31,10 @@ enum Affiliation: String {
             return Colors.red
         }
     }
+    
+    func string() -> String {
+        return self.string()
+    }
 }
 
 extension Affiliation: Decodable {
@@ -52,7 +56,7 @@ struct Member: Decodable {
     let firstName: String?
     let lastName: String?
     let birthdate: Date?
-    let profilePicture: String? // TODO: RENAME!!!
+    let profilePicture: String?
     let forceSensitive: Bool
     let affiliation: Affiliation?
     
@@ -72,5 +76,10 @@ struct Member: Decodable {
     
     func displayForceSensitive() -> String {
         return String(format: LocalizedStrings.forceSensitive_colon, forceSensitive ? "Yes" : "No")
+    }
+    
+    func displayAffiliation() -> String {
+        guard let affiliation = affiliation else { return "" }
+        return String(format: LocalizedStrings.affiliation_colon, "\(affiliation)")
     }
 }

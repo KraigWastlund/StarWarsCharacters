@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var birthdayLabel: UILabel!
     @IBOutlet weak var forceSensitiveLabel: UILabel!
+    @IBOutlet weak var affiliationLabel: UILabel!
     
     var member: Member!
     var context: NSManagedObjectContext!
@@ -25,7 +26,6 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         require(context != nil)
         require(member != nil)
-        // title = "                           " // don't want a title in the nav on this particular view
         ProfileImage.getProfileImage(for: member, newUrl: nil, in: context, completion: { [weak self] (profileImage) in
             guard let s = self else { return }
             guard let profileImage = profileImage else { return }
@@ -41,5 +41,6 @@ class DetailViewController: UIViewController {
         nameLabel.text = member.displayName()
         birthdayLabel.text = member.displayBirthday()
         forceSensitiveLabel.text = member.displayForceSensitive()
+        affiliationLabel.text = member.displayAffiliation()
     }
 }

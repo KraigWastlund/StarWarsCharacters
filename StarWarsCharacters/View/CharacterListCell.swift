@@ -15,11 +15,6 @@ fileprivate let _imageDim: CGFloat = _cellHeight - (_imagePadding * 2)
 fileprivate let _dotDim: CGFloat = 15
 
 class CharacterListCell: UITableViewCell {
-
-//    static let cellHeight: CGFloat = 80
-//    private static let imagePadding: CGFloat = 12
-//    private static let imageWidth: CGFloat = cellHeight - (CharacterListCell.imagePadding * 2)
-    // private let customBackgroundView = UIView()
     
     var affiliation: Affiliation? {
         didSet {
@@ -52,28 +47,6 @@ class CharacterListCell: UITableViewCell {
         setup()
     }
     
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        // don't clear out color of the custom view on selection ##hack
-//        let color = customBackgroundView.backgroundColor
-//        super.setSelected(selected, animated: animated)
-//
-//        if selected {
-//            customBackgroundView.backgroundColor = color
-//        }
-//        // don't clear out color of the custom view on selection ##hack
-//    }
-//
-//    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-//        // don't clear out color of the custom view on selection ##hack
-//        let color = customBackgroundView.backgroundColor
-//        super.setHighlighted(highlighted, animated: animated)
-//
-//        if highlighted {
-//            customBackgroundView.backgroundColor = color
-//        }
-//        // don't clear out color of the custom view on selection ##hack
-//    }
-    
     private func setup() {
         
         // transparent background
@@ -101,13 +74,6 @@ class CharacterListCell: UITableViewCell {
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[name]|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: views))
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[dot(\(_dotDim))]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: views))
         contentView.addConstraint(NSLayoutConstraint(item: dot, attribute: .centerY, relatedBy: .equal, toItem: contentView, attribute: .centerY, multiplier: 1.0, constant: 0.0))
-        
-        // custom background view for UI selection hack
-//        customBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-//        addSubview(customBackgroundView)
-//        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": customBackgroundView]))
-//        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": customBackgroundView]))
-//        sendSubviewToBack(customBackgroundView)
     }
     
     func populateCell(name: String, affiliation: Affiliation) {
@@ -121,20 +87,21 @@ extension CharacterListCell {
     private func reactToAffiliationChange() {
         
         guard let affiliation = affiliation else { checkFailure("affiliation just got set"); return }
-        
-        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+        dot.backgroundColor = affiliation.color()
+        dot.alpha = 0.0
+        nameLabel.alpha = 0.0
+        profileImageView.alpha = 0.0
+        UIView.animate(withDuration: 2.0) { [weak self] in
             guard let s = self else { return }
-            // s.customBackgroundView.backgroundColor = affiliation.color()
-            s.dot.backgroundColor = affiliation.color()
-        }) { (complete) in
-            // do stuff?
+            s.dot.alpha = 1.0
+            s.nameLabel.alpha = 1.0
+            s.profileImageView.alpha = 1.0
         }
     }
     
     private func reactToImageChange() {
         
         guard let image = profileImage else { checkFailure("image just got set"); return }
-        
         profileImageView.image = image
         setNeedsLayout()
     }

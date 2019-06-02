@@ -24,8 +24,10 @@
 		64356D7622A411E6006C83FC /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64356D7522A411E6006C83FC /* Member.swift */; };
 		64356D7B22A45A93006C83FC /* ProfileImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64356D7A22A45A93006C83FC /* ProfileImage+extension.swift */; };
 		64504AF822A4677F00B85803 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64504AF722A4677F00B85803 /* Colors.swift */; };
-		64504AFA22A4688A00B85803 /* colors.png in Resources */ = {isa = PBXBuildFile; fileRef = 64504AF922A4688A00B85803 /* colors.png */; };
+		64504AFA22A4688A00B85803 /* EmpireStrikesBack_colors.png in Resources */ = {isa = PBXBuildFile; fileRef = 64504AF922A4688A00B85803 /* EmpireStrikesBack_colors.png */; };
 		64504AFC22A46BE400B85803 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64504AFB22A46BE400B85803 /* DetailViewController.swift */; };
+		64504AFE22A489B000B85803 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64504AFD22A489B000B85803 /* Sound.swift */; };
+		64504B0122A48A5B00B85803 /* Lightsaber.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 64504B0022A48A5B00B85803 /* Lightsaber.mp3 */; };
 		9AAB6FBC14AD56EBF6F14974 /* Pods_StarWarsCharacters.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9610578A571E5CA13FB030F6 /* Pods_StarWarsCharacters.framework */; };
 		C049E8D845A53ECF866ACAF8 /* Pods_StarWarsCharactersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1554E93ADA1900673B916DC9 /* Pods_StarWarsCharactersTests.framework */; };
 /* End PBXBuildFile section */
@@ -64,8 +66,10 @@
 		64356D7522A411E6006C83FC /* Member.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		64356D7A22A45A93006C83FC /* ProfileImage+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileImage+extension.swift"; sourceTree = "<group>"; };
 		64504AF722A4677F00B85803 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		64504AF922A4688A00B85803 /* colors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colors.png; sourceTree = "<group>"; };
+		64504AF922A4688A00B85803 /* EmpireStrikesBack_colors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmpireStrikesBack_colors.png; sourceTree = "<group>"; };
 		64504AFB22A46BE400B85803 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		64504AFD22A489B000B85803 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		64504B0022A48A5B00B85803 /* Lightsaber.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Lightsaber.mp3; sourceTree = "<group>"; };
 		7E1FEF4D452CFCB4212117BA /* Pods-StarWarsCharacters.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsCharacters.debug.xcconfig"; path = "Target Support Files/Pods-StarWarsCharacters/Pods-StarWarsCharacters.debug.xcconfig"; sourceTree = "<group>"; };
 		7EAE4DD2573AB350DD66826F /* Pods-StarWarsCharactersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsCharactersTests.release.xcconfig"; path = "Target Support Files/Pods-StarWarsCharactersTests/Pods-StarWarsCharactersTests.release.xcconfig"; sourceTree = "<group>"; };
 		9610578A571E5CA13FB030F6 /* Pods_StarWarsCharacters.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWarsCharacters.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +136,7 @@
 				64356D6222A40EDD006C83FC /* View */,
 				64356D6122A40ED6006C83FC /* Controller */,
 				64356D6C22A4106A006C83FC /* Extension */,
+				64504AFF22A48A4D00B85803 /* Sounds */,
 				64356D6722A40FA8006C83FC /* Utilities */,
 			);
 			path = StarWarsCharacters;
@@ -179,10 +184,11 @@
 		64356D6722A40FA8006C83FC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				64504AF922A4688A00B85803 /* colors.png */,
+				64504AF922A4688A00B85803 /* EmpireStrikesBack_colors.png */,
 				64504AF722A4677F00B85803 /* Colors.swift */,
 				64356D6822A40FB3006C83FC /* LocalizedStrings.swift */,
 				64356D6A22A41055006C83FC /* NetworkHelper.swift */,
+				64504AFD22A489B000B85803 /* Sound.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -196,6 +202,14 @@
 				64356D7122A410D2006C83FC /* URLSession+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		64504AFF22A48A4D00B85803 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				64504B0022A48A5B00B85803 /* Lightsaber.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		AD19BB5FDD2982F4A2ECDFA2 /* Frameworks */ = {
@@ -294,7 +308,8 @@
 			files = (
 				64356D4B22A40E51006C83FC /* LaunchScreen.storyboard in Resources */,
 				64356D4822A40E51006C83FC /* Assets.xcassets in Resources */,
-				64504AFA22A4688A00B85803 /* colors.png in Resources */,
+				64504AFA22A4688A00B85803 /* EmpireStrikesBack_colors.png in Resources */,
+				64504B0122A48A5B00B85803 /* Lightsaber.mp3 in Resources */,
 				64356D4322A40E4F006C83FC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +419,7 @@
 				64356D6B22A41055006C83FC /* NetworkHelper.swift in Sources */,
 				64504AF822A4677F00B85803 /* Colors.swift in Sources */,
 				64356D7022A410AD006C83FC /* JSONDecoder+Extension.swift in Sources */,
+				64504AFE22A489B000B85803 /* Sound.swift in Sources */,
 				64356D6922A40FB3006C83FC /* LocalizedStrings.swift in Sources */,
 				64356D7422A410F0006C83FC /* UIColor+Extension.swift in Sources */,
 				64356D7622A411E6006C83FC /* Member.swift in Sources */,

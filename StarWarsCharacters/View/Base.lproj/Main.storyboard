@@ -84,11 +84,22 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AFFILIATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPn-Ku-JQd">
+                                <rect key="frame" x="47" y="569" width="320" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="hoy-ze-hTQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="HPn-Ku-JQd" firstAttribute="top" secondItem="NRd-G5-aI7" secondAttribute="bottom" constant="8" id="1hS-Fz-QI1"/>
                             <constraint firstItem="NRd-G5-aI7" firstAttribute="leading" secondItem="fRk-Ht-3Ol" secondAttribute="leading" id="Ea4-ZV-UiO"/>
                             <constraint firstItem="mHK-qn-nmC" firstAttribute="leading" secondItem="Dfh-ra-DRV" secondAttribute="leading" id="FX5-L1-6yH"/>
+                            <constraint firstItem="HPn-Ku-JQd" firstAttribute="leading" secondItem="NRd-G5-aI7" secondAttribute="leading" id="Fhh-ib-KFO"/>
                             <constraint firstItem="NRd-G5-aI7" firstAttribute="trailing" secondItem="fRk-Ht-3Ol" secondAttribute="trailing" id="Jwd-xl-Jpo"/>
                             <constraint firstItem="fRk-Ht-3Ol" firstAttribute="leading" secondItem="mHK-qn-nmC" secondAttribute="leading" id="MDb-Tv-u25"/>
                             <constraint firstItem="fRk-Ht-3Ol" firstAttribute="trailing" secondItem="mHK-qn-nmC" secondAttribute="trailing" id="VDX-dm-x2z"/>
@@ -97,11 +108,13 @@
                             <constraint firstItem="fRk-Ht-3Ol" firstAttribute="top" secondItem="mHK-qn-nmC" secondAttribute="bottom" constant="10" id="l2W-cy-3bm"/>
                             <constraint firstItem="mHK-qn-nmC" firstAttribute="top" secondItem="Dfh-ra-DRV" secondAttribute="bottom" constant="17" id="tpV-uc-IBW"/>
                             <constraint firstItem="NRd-G5-aI7" firstAttribute="top" secondItem="fRk-Ht-3Ol" secondAttribute="bottom" constant="10" id="waH-9l-KdU"/>
+                            <constraint firstItem="HPn-Ku-JQd" firstAttribute="trailing" secondItem="NRd-G5-aI7" secondAttribute="trailing" id="xFW-3C-tzs"/>
                             <constraint firstItem="Dfh-ra-DRV" firstAttribute="top" secondItem="sQU-7A-NCQ" secondAttribute="top" constant="20" id="xUZ-RO-7Qn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sQU-7A-NCQ"/>
                     </view>
                     <connections>
+                        <outlet property="affiliationLabel" destination="HPn-Ku-JQd" id="8g2-m6-aOu"/>
                         <outlet property="birthdayLabel" destination="fRk-Ht-3Ol" id="y2G-1b-72i"/>
                         <outlet property="forceSensitiveLabel" destination="NRd-G5-aI7" id="8c9-Jy-rwb"/>
                         <outlet property="imageView" destination="Dfh-ra-DRV" id="tdZ-X6-8a9"/>

@@ -77,6 +77,7 @@ class CharacterListTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         selectedMember = members[indexPath.row]
         performSegue(withIdentifier: "showDetail", sender: self)
+        SoundManager.shared().playSound()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
