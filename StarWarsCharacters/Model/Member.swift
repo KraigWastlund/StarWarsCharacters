@@ -76,6 +76,15 @@ struct Member: Decodable {
     
     func displayAffiliation() -> String {
         guard let affiliation = affiliation else { return "" }
-        return String(format: LocalizedStrings.affiliation_colon, "\(affiliation)")
+        switch affiliation {
+        case .FIRST_ORDER:
+            return "First Order"
+        case .SITH:
+            return "Sith"
+        case .RESISTANCE:
+            return "Resistance"
+        case .JEDI:
+            return "Jedi"
+        }
     }
 }

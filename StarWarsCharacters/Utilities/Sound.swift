@@ -20,6 +20,10 @@ class SoundManager {
     var player: AVAudioPlayer?
     
     func playSound() {
+        
+        // stop any previous sounds
+        player?.stop()
+        
         guard let url = Bundle.main.url(forResource: "Lightsaber", withExtension: "mp3") else { return }
         
         do {

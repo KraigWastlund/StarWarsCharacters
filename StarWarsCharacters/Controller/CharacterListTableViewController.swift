@@ -19,7 +19,7 @@ class CharacterListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = LocalizedStrings.galacticPersonnel
+        title = LocalizedStrings.listTitle
         setup()
     }
     
@@ -31,6 +31,9 @@ class CharacterListTableViewController: UITableViewController {
     private func setup() {
         
         tableView.register(CharacterListCell.self, forCellReuseIdentifier: "cell")
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "space"))
+        imageView.contentMode = UIImageView.ContentMode.scaleAspectFill
+        tableView.backgroundView = imageView
         
         // network call
         URLSession.shared.apiGetCall(urlSuffix: "", type: MemberNetworkResponse.self) { [weak self] (success, result) in
