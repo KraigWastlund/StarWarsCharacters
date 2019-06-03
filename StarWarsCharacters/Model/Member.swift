@@ -87,4 +87,18 @@ struct Member: Decodable {
             return "Jedi"
         }
     }
+    
+    func displayAffiliationImage() -> UIImage {
+        guard let affiliation = affiliation else { return UIImage() }
+        switch affiliation {
+        case .FIRST_ORDER:
+            return #imageLiteral(resourceName: "firstorder-symbol")
+        case .SITH:
+            return #imageLiteral(resourceName: "sith-symbol")
+        case .RESISTANCE:
+            return #imageLiteral(resourceName: "resistance-symbol")
+        case .JEDI:
+            return #imageLiteral(resourceName: "jedi-symbol")
+        }
+    }
 }

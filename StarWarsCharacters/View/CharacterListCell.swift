@@ -9,12 +9,13 @@
 import UIKit
 import DBC
 
-let _cellHeight: CGFloat = 80
 fileprivate let _imagePadding: CGFloat = 12
-fileprivate let _imageDim: CGFloat = _cellHeight - (_imagePadding * 2)
-fileprivate let _dotDim: CGFloat = 15
+fileprivate let _imageDim: CGFloat = CharacterListCell.cellHeight - (_imagePadding * 2)
+fileprivate let _dotDim: CGFloat = 20
 
 class CharacterListCell: UITableViewCell {
+    
+    static let cellHeight: CGFloat = 80
     
     var affiliation: Affiliation? {
         didSet {
@@ -50,11 +51,11 @@ class CharacterListCell: UITableViewCell {
     private func setup() {
         
         // transparent background
-        backgroundColor = .clear
+        backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(nameLabel)
-        nameLabel.font = .systemFont(ofSize: 24, weight: .light)
+        nameLabel.font = .systemFont(ofSize: 24, weight: .regular)
         nameLabel.textColor = .white
         
         profileImageView.translatesAutoresizingMaskIntoConstraints = false

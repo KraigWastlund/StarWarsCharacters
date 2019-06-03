@@ -15,20 +15,21 @@ extension URLSession {
     func apiGetCall<T>(urlSuffix: String, type: T.Type, completion: @escaping (_ success: Bool, _ result: Any)->Void) where T: Decodable {
         
         let urlString = _domainString + urlSuffix
-        let escapedUrlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let url = URL(string: escapedUrlString)!
-        if let request = NetworkHelper.networkRequest(url: url) {
-            
-            URLSession.shared.apiCall(request: request) { (success, data) in
+        if let escapedUrlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            let url = URL(string: escapedUrlString)!
+            if let request = NetworkHelper.networkRequest(url: url) {
                 
-                guard success == true else { completion(false, [String]()); return }
-                
-                do {
-                    let nr = try JSONDecoder.challengeDecoder().decode(type, from: data)
-                    DispatchQueue.main.async{ completion(true, nr) }
-                } catch let error {
-                    checkFailure("Failed to decode information. \(error)")
-                    completion(false, [String]())
+                URLSession.shared.apiCall(request: request) { (success, data) in
+                    
+                    guard success == true else { completion(false, [String]()); return }
+                    
+                    do {
+                        let nr = try JSONDecoder.challengeDecoder().decode(type, from: data)
+                        DispatchQueue.main.async{ completion(true, nr) }
+                    } catch let error {
+                        checkFailure("Failed to decode information. \(error)")
+                        completion(false, [String]())
+                    }
                 }
             }
         }

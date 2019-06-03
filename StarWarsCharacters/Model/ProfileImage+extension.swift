@@ -79,7 +79,6 @@ extension ProfileImage {
                 let newProfileImage = ProfileImage(context: context)
                 newProfileImage.memberId = memberId
                 newProfileImage.imageUrl = url
-                // TODO: FIX !
                 newProfileImage.image = url.hasSuffix(".png") ? image.pngData() : image.jpegData(compressionQuality: 1.0)
                 
                 do {
