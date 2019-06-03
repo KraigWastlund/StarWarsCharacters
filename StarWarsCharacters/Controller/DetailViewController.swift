@@ -34,6 +34,8 @@ class DetailViewController: UIViewController {
         
     private func setup() {
         
+        view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "black_space"))
+        
         // get image from core data
         ProfileImage.getProfileImage(for: member, newUrl: nil, in: context, completion: { [weak self] (profileImage) in
             guard let s = self else { return }
