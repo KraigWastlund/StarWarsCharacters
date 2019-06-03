@@ -19,6 +19,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var forceSensitiveLabel: UILabel!
     @IBOutlet weak var affiliationLabel: UILabel!
     @IBOutlet weak var affiliationImageView: UIImageView!
+    @IBOutlet weak var affiliationColorView: UIView!
     
     var member: Member!
     var context: NSManagedObjectContext!
@@ -32,8 +33,6 @@ class DetailViewController: UIViewController {
     }
         
     private func setup() {
-        
-        view.backgroundColor = member.affiliation?.color()
         
         // get image from core data
         ProfileImage.getProfileImage(for: member, newUrl: nil, in: context, completion: { [weak self] (profileImage) in
@@ -49,5 +48,6 @@ class DetailViewController: UIViewController {
         forceSensitiveLabel.text = member.displayForceSensitive()
         affiliationLabel.text = member.displayAffiliation()
         affiliationImageView.image = member.displayAffiliationImage()
+        affiliationColorView.backgroundColor = member.affiliation?.color()
     }
 }

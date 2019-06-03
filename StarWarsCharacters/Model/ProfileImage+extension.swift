@@ -19,6 +19,7 @@ extension ProfileImage {
         if let profileImage = ProfileImage.retreiveFromCoreData(withMemberId: member.id, in: context) {
             if newUrl == nil || profileImage.imageUrl == newUrl {
                 completion(profileImage)
+                return
             } else {
                 ProfileImage.deleteFromCoreData(profileImage: profileImage, in: context)
             }
@@ -34,11 +35,11 @@ extension ProfileImage {
                 let data = data, error == nil,
                 let image = UIImage(data: data)
                 else { return }
-            
+
             ProfileImage.saveToCoreData(image: image, url: urlString, memberId: member.id, context: context) { (profileImage) in
                 completion(profileImage)
             }
-            }.resume()
+        }.resume()
     }
 }
 

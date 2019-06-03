@@ -22,13 +22,13 @@ enum Affiliation: String {
     func color() -> UIColor {
         switch self {
         case .JEDI:
-            return Colors.navyBlue
+            return Colors.jedi
         case .RESISTANCE:
-            return Colors.greyBlue
+            return Colors.resistance
         case .FIRST_ORDER:
-            return Colors.maroon
+            return Colors.firstOrder
         case .SITH:
-            return Colors.red
+            return Colors.sith
         }
     }
 }
@@ -40,6 +40,19 @@ extension Affiliation: Decodable {
         case RESISTANCE
         case FIRST_ORDER
         case SITH
+    }
+    
+    func displayTitle() -> String {
+        switch self {
+        case .FIRST_ORDER:
+            return "First Order"
+        case .SITH:
+            return "Sith"
+        case .RESISTANCE:
+            return "Resistance"
+        case .JEDI:
+            return "Jedi"
+        }
     }
 }
 
@@ -76,16 +89,7 @@ struct Member: Decodable {
     
     func displayAffiliation() -> String {
         guard let affiliation = affiliation else { return "" }
-        switch affiliation {
-        case .FIRST_ORDER:
-            return "First Order"
-        case .SITH:
-            return "Sith"
-        case .RESISTANCE:
-            return "Resistance"
-        case .JEDI:
-            return "Jedi"
-        }
+        return affiliation.displayTitle()
     }
     
     func displayAffiliationImage() -> UIImage {

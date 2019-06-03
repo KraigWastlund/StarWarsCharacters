@@ -57,11 +57,13 @@ class CharacterListCell: UITableViewCell {
         contentView.addSubview(nameLabel)
         nameLabel.font = .systemFont(ofSize: 24, weight: .regular)
         nameLabel.textColor = .white
+        nameLabel.adjustsFontSizeToFitWidth = true
         
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(profileImageView)
         profileImageView.layer.cornerRadius = _imageDim / 2
         profileImageView.layer.masksToBounds = true
+        profileImageView.image = #imageLiteral(resourceName: "image_placeholder")
         
         dot.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(dot)
@@ -92,7 +94,7 @@ extension CharacterListCell {
         dot.alpha = 0.0
         nameLabel.alpha = 0.0
         profileImageView.alpha = 0.0
-        UIView.animate(withDuration: 2.0) { [weak self] in
+        UIView.animate(withDuration: 0.5) { [weak self] in
             guard let s = self else { return }
             s.dot.alpha = 1.0
             s.nameLabel.alpha = 1.0
@@ -105,5 +107,9 @@ extension CharacterListCell {
         guard let image = profileImage else { checkFailure("image just got set"); return }
         profileImageView.image = image
         setNeedsLayout()
+    }
+    
+    func resetImageView() {
+        profileImageView.image = #imageLiteral(resourceName: "image_placeholder")
     }
 }

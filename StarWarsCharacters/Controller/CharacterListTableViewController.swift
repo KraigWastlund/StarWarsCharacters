@@ -10,9 +10,16 @@ import UIKit
 import CoreData
 import DBC
 
+struct MemberSection {
+    let members: [Member]
+    let sectionTitle: String
+}
+
+let _useLargeTestData = false
+
 class CharacterListTableViewController: UITableViewController {
     
-    private var members = [Member]()
+    private var memberSections = [MemberSection]()
     var context: NSManagedObjectContext!
     var selectedMember: Member?
     var backgroundImages = [#imageLiteral(resourceName: "space_02"), #imageLiteral(resourceName: "space_01"), #imageLiteral(resourceName: "space_03"), #imageLiteral(resourceName: "space_06"), #imageLiteral(resourceName: "space_05"), #imageLiteral(resourceName: "space_04")]
@@ -46,34 +53,68 @@ class CharacterListTableViewController: UITableViewController {
         
         tableView.register(CharacterListCell.self, forCellReuseIdentifier: "cell")
         
-        // get characters JSON and map to struct
-        URLSession.shared.apiGetCall(urlSuffix: "", type: MemberNetworkResponse.self) { [weak self] (success, result) in
-            guard let s = self else { return }
-            guard success == true else { return }
-            guard let r = result as? MemberNetworkResponse else { checkFailure("We didn't get the object back we were expecting? (Member)"); return }
-            s.members = r.individuals
-            s.tableView.reloadData()
+        if _useLargeTestData {
+            if let path = Bundle.main.path(forResource: "test", ofType: "json") {
+                do {
+                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                    let memberNetworkResponse = try JSONDecoder.challengeDecoder().decode(MemberNetworkResponse.self, from: data)
+                    memberSections = CharacterListTableViewController.memberSections(from: memberNetworkResponse.individuals)
+                } catch {
+                    fatalError()
+                }
+            }
+        } else {
+            URLSession.shared.apiGetCall(urlSuffix: "", type: MemberNetworkResponse.self) { [weak self] (success, result) in
+                guard let s = self else { return }
+                guard success == true else { return }
+                guard let r = result as? MemberNetworkResponse else { checkFailure("We didn't get the object back we were expecting? (Member)"); return }
+                s.memberSections = CharacterListTableViewController.memberSections(from: r.individuals)
+                s.tableView.reloadData()
+            }
         }
     }
 
     // MARK: - Table view datasource/delegate
-
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return memberSections.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return memberSections[section].members.count
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CharacterListCell.cellHeight
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return members.count
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        
+        let titleLabel = UILabel(frame: CGRect(x: 20, y: 20, width: 200, height: 20))
+        titleLabel.textColor = .white
+        titleLabel.font = .systemFont(ofSize: 12, weight: .medium)
+        headerView.addSubview(titleLabel)
+        titleLabel.text = memberSections[section].sectionTitle.uppercased()
+        
+        return headerView
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CharacterListCell else { return UITableViewCell() }
         
-        let currentMember = members[indexPath.row]
+        cell.resetImageView()
+        let section = memberSections[indexPath.section]
+        let currentMember = section.members[indexPath.row]
         
         if let affiliation = currentMember.affiliation, let urlString = currentMember.profilePicture {
             
@@ -95,7 +136,8 @@ class CharacterListTableViewController: UITableViewController {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        selectedMember = members[indexPath.row]
+        let section = memberSections[indexPath.section]
+        selectedMember = section.members[indexPath.row]
         performSegue(withIdentifier: "showDetail", sender: self)
         
         SoundManager.shared().playSound()
@@ -110,5 +152,18 @@ class CharacterListTableViewController: UITableViewController {
         
         vc.member = selectedMember
         vc.context = context
+    }
+    
+    // MARK: DATASOURCE HELPER
+    
+    static func memberSections(from members: [Member]) -> [MemberSection] {
+        var memberSections = [MemberSection]()
+        
+        for aff in [Affiliation.JEDI, Affiliation.RESISTANCE, Affiliation.FIRST_ORDER, Affiliation.SITH] {
+            let members = members.filter{ $0.affiliation == aff}
+            memberSections.append(MemberSection(members: members, sectionTitle: aff.displayTitle()))
+        }
+        
+        return memberSections
     }
 }
