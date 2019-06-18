@@ -26,6 +26,7 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         require(context != nil)
         require(member != nil)
         

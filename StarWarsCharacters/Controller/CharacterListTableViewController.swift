@@ -159,7 +159,7 @@ class CharacterListTableViewController: UITableViewController {
     static func memberSections(from members: [Member]) -> [MemberSection] {
         var memberSections = [MemberSection]()
         
-        for aff in [Affiliation.JEDI, Affiliation.RESISTANCE, Affiliation.FIRST_ORDER, Affiliation.SITH] {
+        for aff in Affiliation.allCases {
             let members = members.filter{ $0.affiliation == aff}
             memberSections.append(MemberSection(members: members, sectionTitle: aff.displayTitle()))
         }

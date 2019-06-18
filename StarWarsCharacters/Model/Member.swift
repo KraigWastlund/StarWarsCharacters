@@ -12,45 +12,35 @@ import UIKit
 import CoreData
 import DBC
 
-enum Affiliation: String {
+enum Affiliation: String, Decodable, CaseIterable {
     
-    case JEDI
-    case RESISTANCE
-    case FIRST_ORDER
-    case SITH
+    case jedi = "JEDI"
+    case resistance = "RESISTANCE"
+    case firstOrder = "FIRST_ORDER"
+    case sith = "SITH"
     
     func color() -> UIColor {
         switch self {
-        case .JEDI:
+        case .jedi:
             return Colors.jedi
-        case .RESISTANCE:
+        case .resistance:
             return Colors.resistance
-        case .FIRST_ORDER:
+        case .firstOrder:
             return Colors.firstOrder
-        case .SITH:
+        case .sith:
             return Colors.sith
         }
-    }
-}
-
-extension Affiliation: Decodable {
-    
-    private enum CodingKeys: String, CodingKey {
-        case JEDI
-        case RESISTANCE
-        case FIRST_ORDER
-        case SITH
     }
     
     func displayTitle() -> String {
         switch self {
-        case .FIRST_ORDER:
+        case .firstOrder:
             return "First Order"
-        case .SITH:
+        case .sith:
             return "Sith"
-        case .RESISTANCE:
+        case .resistance:
             return "Resistance"
-        case .JEDI:
+        case .jedi:
             return "Jedi"
         }
     }
@@ -95,13 +85,13 @@ struct Member: Decodable {
     func displayAffiliationImage() -> UIImage {
         guard let affiliation = affiliation else { return UIImage() }
         switch affiliation {
-        case .FIRST_ORDER:
+        case .firstOrder:
             return #imageLiteral(resourceName: "firstorder-symbol")
-        case .SITH:
+        case .sith:
             return #imageLiteral(resourceName: "sith-symbol")
-        case .RESISTANCE:
+        case .resistance:
             return #imageLiteral(resourceName: "resistance-symbol")
-        case .JEDI:
+        case .jedi:
             return #imageLiteral(resourceName: "jedi-symbol")
         }
     }
